@@ -1,0 +1,100 @@
+export const centers = [
+  {
+    id: 'nino-jesus',
+    name: 'Centro Niño Jesús',
+    city: 'Bogotá',
+    department: 'Cundinamarca',
+    country: 'Colombia',
+    province: 'Provincia Bogotá',
+    lat: 4.6288,
+    lng: -74.0648,
+    type: 'Centro cooperador',
+    description:
+      'Comunidad de Salesianos Cooperadores en la Inspectoría San Pedro Claver, al servicio de la misión educativa y pastoral en Bogotá.',
+  },
+  {
+    id: 'casa-pinardi',
+    name: 'Centro Casa Pinardi',
+    city: 'Bogotá',
+    department: 'Cundinamarca',
+    country: 'Colombia',
+    province: 'Provincia Bogotá',
+    lat: 4.5981,
+    lng: -74.0758,
+    type: 'Centro cooperador',
+    description:
+      'Presencia cooperadora vinculada al espíritu de Don Bosco y al acompañamiento de jóvenes en contextos de vulnerabilidad.',
+  },
+  {
+    id: 'san-jose-mosquera',
+    name: 'Centro San José',
+    city: 'Mosquera',
+    department: 'Cundinamarca',
+    country: 'Colombia',
+    province: 'Provincia Bogotá',
+    lat: 4.7056,
+    lng: -74.2303,
+    type: 'Centro cooperador',
+    description:
+      'Comunidad cooperadora en Mosquera que acompaña procesos educativos y pastorales de la Familia Salesiana.',
+  },
+  {
+    id: 'maria-auxiliadora-contratacion',
+    name: 'Centro María Auxiliadora',
+    city: 'Contratación',
+    department: 'Santander',
+    country: 'Colombia',
+    province: 'Provincia Bogotá',
+    lat: 6.2906,
+    lng: -73.4722,
+    type: 'Centro cooperador',
+    description:
+      'Centro cooperador en Santander que vive la espiritualidad salesiana y el compromiso con los jóvenes de la región.',
+  },
+  {
+    id: 'miguel-rua-pitalito',
+    name: 'Centro Miguel Rúa',
+    city: 'Pitalito',
+    department: 'Huila',
+    country: 'Colombia',
+    province: 'Provincia Bogotá',
+    lat: 1.8537,
+    lng: -76.0507,
+    type: 'Centro cooperador',
+    description:
+      'Comunidad inspirada en el testimonio de Miguel Rúa, dedicada al servicio educativo y evangelizador en el Huila.',
+  },
+  {
+    id: 'sofia-camacho-bucaramanga',
+    name: 'Centro Sofía Camacho Motta',
+    city: 'Bucaramanga',
+    department: 'Santander',
+    country: 'Colombia',
+    province: 'Provincia Bogotá',
+    lat: 7.1193,
+    lng: -73.1227,
+    type: 'Centro cooperador',
+    description:
+      'Presencia cooperadora en Bucaramanga que fortalece la red salesiana y el acompañamiento a la juventud.',
+  },
+  {
+    id: 'san-medardo-neiva',
+    name: 'Centro San Medardo',
+    city: 'Neiva',
+    department: 'Huila',
+    country: 'Colombia',
+    province: 'Provincia Bogotá',
+    lat: 2.9345,
+    lng: -75.2801,
+    type: 'Centro cooperador',
+    description:
+      'Centro cooperador en Neiva, ligado al legado salesiano y a la educación integral de niños y jóvenes.',
+  },
+]
+
+export const provinceInfo = {
+  name: 'Provincia Bogotá',
+  inspectoria: 'Inspectoría San Pedro Claver',
+  email: 'salesianoscooperadoresprobog@gmail.com',
+  facebook: 'salesianoscooperadoresprovbog',
+}
