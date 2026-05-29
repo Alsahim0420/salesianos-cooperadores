@@ -7,15 +7,17 @@ import { useTheme } from '../context/ThemeContext'
 import AnimatedSectionTitle from './animations/AnimatedSectionTitle'
 import Reveal from './animations/Reveal'
 
-const TILE_LIGHT = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+const TILE_LIGHT =
+  'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
 const TILE_DARK =
   'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
 
 function createTileLayer(isDark) {
   return L.tileLayer(isDark ? TILE_DARK : TILE_LIGHT, {
     attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
-    maxZoom: 18,
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 20,
   })
 }
 
@@ -114,8 +116,12 @@ function CentersMapSection() {
     }
     window.addEventListener('resize', handleResize)
 
+    const resizeObserver = new ResizeObserver(handleResize)
+    resizeObserver.observe(container)
+
     return () => {
       observer.disconnect()
+      resizeObserver.disconnect()
       window.removeEventListener('resize', handleResize)
       if (markersLayer.current) {
         markersLayer.current.clearLayers()
@@ -168,11 +174,11 @@ function CentersMapSection() {
           />
         </Reveal>
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_340px]">
-          <div className="relative">
+        <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_340px] lg:items-stretch">
+          <div className="relative min-h-[420px] sm:min-h-[480px] lg:h-full">
             <div
               ref={mapRef}
-              className="sscc-map-container h-[420px] w-full overflow-hidden rounded-2xl border border-[#123C69]/10 bg-[#F5F0E6] shadow-[0_6px_18px_rgba(46,46,46,0.06)] dark:border-white/10 dark:bg-[#112240] dark:shadow-[0_6px_18px_rgba(0,0,0,0.3)] sm:h-[480px]"
+              className="sscc-map-container h-full min-h-[420px] w-full overflow-hidden rounded-2xl border border-[#123C69]/10 bg-[#e8e8e8] shadow-[0_6px_18px_rgba(46,46,46,0.06)] sm:min-h-[480px] dark:border-white/10 dark:bg-[#112240] dark:shadow-[0_6px_18px_rgba(0,0,0,0.3)]"
               aria-label="Mapa interactivo de centros de la Provincia Bogotá"
             />
             {!mapReady && (
@@ -182,12 +188,18 @@ function CentersMapSection() {
             )}
           </div>
 
-          <Reveal direction="right" variant="lateral" duration={0.9} delay={0.05}>
+          <Reveal
+            direction="right"
+            variant="lateral"
+            duration={0.9}
+            delay={0.05}
+            className="h-full"
+          >
             <div className="flex h-full flex-col gap-4">
-              <p className="text-xs font-medium uppercase tracking-[0.14em] text-[#123C69] dark:text-[#7EB3E0]">
+              <p className="shrink-0 text-xs font-medium uppercase tracking-[0.14em] text-[#123C69] dark:text-[#7EB3E0]">
                 {provinceInfo.name} · {centers.length} centros
               </p>
-              <ul className="max-h-[300px] space-y-2 overflow-y-auto pr-1 lg:max-h-[360px]">
+              <ul className="min-h-0 flex-1 space-y-2 overflow-y-auto pr-1 lg:max-h-none">
                 {centers.map((center) => (
                   <li key={center.id}>
                     <button
@@ -211,7 +223,7 @@ function CentersMapSection() {
               </ul>
 
               {selected && (
-                <article className="rounded-2xl border border-[#123C69]/10 bg-[#FAF7F0] p-5 dark:border-white/10 dark:bg-[#112240]">
+                <article className="shrink-0 rounded-2xl border border-[#123C69]/10 bg-[#FAF7F0] p-5 dark:border-white/10 dark:bg-[#112240]">
                   <div className="mb-2 flex items-center gap-2 text-[#123C69] dark:text-[#7EB3E0]">
                     <MapPin size={16} className="text-[#C9A227]" />
                     <span className="text-xs font-medium uppercase tracking-[0.14em]">
